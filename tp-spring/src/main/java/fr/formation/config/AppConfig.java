@@ -2,7 +2,6 @@ package fr.formation.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 //@ComponentScan({ "fr.formation", "package2", "package3" })

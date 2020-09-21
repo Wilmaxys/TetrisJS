@@ -3,7 +3,6 @@ package fr.formation;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.formation.config.AppConfig;
-import fr.formation.musique.IMusicien;
 
 public class Application {
 	public static void main(String[] args) {
@@ -15,8 +14,15 @@ public class Application {
 				new AnnotationConfigApplicationContext(AppConfig.class);
 		
 		//RECUPERER LE MUSICIEN
-		IMusicien myMusicien = myContext.getBean("unSuperGuitariste", IMusicien.class);
-		myMusicien.jouer();
+//		IMusicien myMusicien = myContext.getBean("unSuperGuitariste", IMusicien.class);
+//		myMusicien.jouer();
+		
+//		myContext.getBean(Application.class).run();
+		
+		myContext
+			.getBeanFactory()
+			.createBean(SpringApplication.class)
+			.run();
 		
 		myContext.close();
 	}
