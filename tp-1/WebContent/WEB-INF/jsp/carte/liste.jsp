@@ -11,7 +11,11 @@
 		
 		<ul>
 			<c:forEach var="carte" items="${ cartes }">
-				<li>${ carte.nom }</li>		
+				<li>
+					${ carte.nom }
+					[ <a href="editer?id=${ carte.id }">Modifier</a> ]
+					[ <a href="supprimer?id=${ carte.id }">Supprimer</a> ]
+				</li>
 			</c:forEach>
 		</ul>
 	</body>

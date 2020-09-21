@@ -13,6 +13,8 @@ import fr.formation.model.Carte;
 
 @WebServlet("/carte/ajouter")
 public class AjoutCarteServlet extends HttpServlet {
+	private static int carteId = 4; 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this
@@ -24,6 +26,8 @@ public class AjoutCarteServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Carte myCarte = new Carte(req.getParameter("nom"));
+		
+		myCarte.setId(carteId++);
 		
 		List<Carte> mesCartes = (List<Carte>)this.getServletContext().getAttribute("cartes");
 		

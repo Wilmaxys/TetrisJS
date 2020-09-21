@@ -15,9 +15,9 @@ public class ApplicationListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		List<Carte> mesCartes = new ArrayList<>();
 
-		mesCartes.add(new Carte("AS DE TREFFLE"));
-		mesCartes.add(new Carte("QUI PIQUE"));
-		mesCartes.add(new Carte("TON COEUR"));
+		mesCartes.add(new Carte(1, "AS DE TREFFLE"));
+		mesCartes.add(new Carte(2, "QUI PIQUE"));
+		mesCartes.add(new Carte(3, "TON COEUR"));
 		
 		sce.getServletContext().setAttribute("cartes", mesCartes);
 	}
