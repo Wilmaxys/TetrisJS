@@ -1,5 +1,7 @@
 package fr.formation.controller;
 
+import java.math.BigDecimal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import fr.formation.model.Produit;
 
 @Controller
 @RequestMapping("/home")
@@ -32,5 +36,17 @@ public class HomeController {
 	@GetMapping("/{iduser}")
 	public String demoPV(@PathVariable("iduser") int id) {
 		return "home";
+	}
+	
+	@PostMapping("/demo")
+//	public String postDemo(@RequestParam String nom, @RequestParam BigDecimal prix) {
+	public String postDemo(Produit produit) {
+//		Produit myProduit = new Produit();
+//
+//		myProduit.setNom(nom);
+//		myProduit.setPrix(prix);
+		
+		
+		return "redirect:/home";
 	}
 }
