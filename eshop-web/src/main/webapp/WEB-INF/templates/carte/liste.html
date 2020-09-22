@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Liste des cartes</title>
+		<base href="/eshop-web/" />
+	</head>
+	
+	<body>
+		<h1>Liste des cartes</h1>
+		
+		<a href="carte/ajouter">AJOUTER</a>
+		
+		<ul>
+			<li th:each="carte : ${ cartes }">
+				[[ ${ carte.nom } ]]
+				
+				[ <a th:href="@{ carte/editer(id=${ carte.id }) }">Modifier</a> ]
+				ou ça
+				[ <a th:href="${ 'carte/editer?id=' + carte.id }">Modifier</a> ]
+				
+				-
+
+				[ <a th:href="@{ carte/supprimer/{id}(id=${ carte.id }) }">Supprimer</a> ]
+				ou ça
+				[ <a th:href="${ 'carte/supprimer/' + carte.id }">Supprimer</a> ]
+			</li>
+		</ul>
+	</body>
+</html>
