@@ -1,46 +1,42 @@
 package fr.formation.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.formation.dao.ICarteRepository;
 import fr.formation.exception.CarteNotFoundException;
 import fr.formation.model.Carte;
 
 @Service
 public class CarteService {
-	private static int id = 1;
-	private List<Carte> cartes;
+	@Autowired
+	private ICarteRepository daoCarte;
 	
 	public List<Carte> findAll() {
-		return this.cartes;
+		return this.daoCarte.findAll();
 	}
 	
 	public void add(Carte carte) {
-		if (this.cartes == null) {
-			this.cartes = new ArrayList<>();
-		}
-		
-		carte.setId(id++);
-		this.cartes.add(carte);
+		this.daoCarte.save(carte);
 	}
 	
+	@Deprecated
 	public void edit(int id, Carte carte) {
-		Carte carteToEdit = this.findById(id);
-		
-		carteToEdit.setNom(carte.getNom());
+		this.daoCarte.save(carte);
+	}
+	
+	public void edit(Carte carte) {
+		this.daoCarte.save(carte);
 	}
 	
 	public Carte findById(int id) {
-		return this.cartes
-					.stream()
-					.filter(c -> c.getId() == id)
-					.findFirst()
+		return this.daoCarte.findById(id)
 					.orElseThrow(CarteNotFoundException::new);
 	}
 	
 	public void deleteById(int id) {
-		this.cartes.removeIf(c -> c.getId() == id);
+		this.daoCarte.deleteById(id);
 	}
 }

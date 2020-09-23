@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement //ACTIVE L'ANNOTATION @Transactionnal (GESTION TX AUTO)
+@EnableJpaRepositories("fr.formation.dao") //ACTIVE LES REPOSITORIES DE DATA-JPA
 public class JpaConfig {
 	@Bean
 	public DataSource dataSource() {

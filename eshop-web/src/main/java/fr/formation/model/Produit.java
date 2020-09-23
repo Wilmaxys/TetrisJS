@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity // ANNOTATION OBLIGATOIRE POUR UNE ENTITE
 @Table(name = "produit")
 public class Produit {
@@ -30,6 +32,7 @@ public class Produit {
 	private BigDecimal prix;
 
 	@Column(name = "PRO_DATE")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 //	@Temporal(TemporalType.TIMESTAMP)
 //	private Date date; //A NE PLUS UTILISER (normalement ...)
 	private LocalDate date; // ou LocalDateTime
