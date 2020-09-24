@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/tetris.css">
+    <script defer src="/js/jquery.js"></script>
+    <script defer src="/js/tetris.js"></script>
+    <script defer src="/js/all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Tetris</div>
+        <!--<div class="sizeGrid">
+            <input id="numberGrid" class="cool-one" type="number" value="4">
+            <div id="changeGrid" class="btn-safe btn-primary">Valider</div>
+        </div>-->
+        <div class="gameboard">
+            <div class="piece">
+                <form  method="post" class="pieceDisplay">
+                    <input class="dp-none" type="textbox" name="id" th:value="${pieceAdd.id}"/>
+                    <div class="square shape gameboardGame">
+                        <div id="grid" class="grid gridLight content noselect">
+                            <div th:each="i: ${#numbers.sequence(0, 3)}" class="row">
+                                <div th:each="j: ${#numbers.sequence(0, 3)}" th:classappend="${pieceAdd.contains(i+1,j+1)} ? selected" th:id="${i*3+j}" th:class="block">
+                                    <input th:if="${pieceAdd.contains(i+1,j+1)}" checked class="dp-none" type="checkbox" name="blocks[]" th:value="${(i+1)+','+(j+1)}">
+                                    <input th:if="${!pieceAdd.contains(i+1,j+1)}" checked class="dp-none" type="checkbox" name="blocks[]" th:value="${(i+1)+','+(j+1)}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttonVal">
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="buttonVal">
+            <a th:href="@{/tetris/list}" class="btn btn-primary">Retour</a>
+        </div>
+    </div>
+</body>
+</html>

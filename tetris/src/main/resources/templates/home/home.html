@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/tetris.css">
+    <script defer src="/js/jquery.js"></script>
+    <script defer src="/js/tetris.js"></script>
+    <script defer src="/js/all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Tetris</div>
+        <div class="home">
+            <!--<a th:href="@{ edit(id=${tetris.id})}" class="homeButton btn-primary">Jouer</a>-->
+            <a th:href="@{ /tetris/play }" class="homeButton btn-primary">Jouer</a>
+            <a th:href="@{ /tetris/list }" class="homeButton btn-primary">Pièces</a>
+        </div>
+    </div>  
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/tetris.css">
+    <script defer src="/js/jquery.js"></script>
+    <script defer src="/js/tetris.js"></script>
+    <script defer src="/js/all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Tetris</div>
+        <div class="menuboard">
+            <div class="menu">
+                <div class="menuTitle">Pièces</div>
+                <div class="menuButton">
+                    <a th:href="@{ /tetris/add }" class="btn btn-primary">Ajouter</a>
+                </div>
+            </div>
+            <div class="listPiece">
+                <div th:each="piece : ${pieces}" class="piece">
+                    <div class="pieceDisplay">
+                        <div class="square shape gameboardGame">
+                            <div class="grid gridBlack content noselect">
+                                <div th:each="i: ${#numbers.sequence(0, piece.size - 1)}" class="row">
+                                    <div th:each="j: ${#numbers.sequence(0, piece.size - 1)}" th:classappend="${piece.contains(i+1,j+1)} ? selected" th:id="${i*piece.size+j}" th:class="block">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pieceDesc">
+                        <div class="pieceDescTitle">
+                            Taille : [[${piece.size}]]
+                        </div>
+                        <!--<div class="pieceDescText">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque leo. 
+                        </div>-->
+                    </div>
+                    <div class="pieceAction">
+                        <a th:href="@{ edit(id=${piece.id})}" class="btn btn-icon btn-primary"><i class="fas fa-pen"></i></a>
+                        <a th:href="@{ delete/{id}(id=${piece.id})}" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttonVal">
+            <a th:href="@{/}" class="btn btn-primary">Retour</a>
+        </div>
+    </div>  
+</body>
+</html>
