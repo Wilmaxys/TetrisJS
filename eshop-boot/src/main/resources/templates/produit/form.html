@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Ajouter un produit</title>
+	</head>
+	
+	<body>
+		<h1 th:if="${ produit == null}">Ajouter un produit</h1>
+		<h1 th:if="${ produit != null}">Modifier le produit</h1>
+		
+		<form method="POST">
+			<div>
+				<label>Nom</label>
+				<input type="text" name="nom" th:value="${ produit?.nom }" />
+			</div>
+			
+			<div>
+				<label>Prix</label>
+				<input type="number" step="0.01" name="prix" th:value="${ produit?.prix }" />
+			</div>
+			
+			<div>
+				<label>Date</label>
+				<input type="date" name="date" th:value="${ produit?.date }" />
+			</div>
+			
+			<div>
+				<label>Type</label>
+				<select name="type">
+					<option value="WATER" th:selected="${ 'WATER' == produit?.type?.name() }">Eau</option>
+					<option value="AIR" th:selected="${ 'AIR' == produit?.type?.name() }">Air</option>
+					<option value="GROUND" th:selected="${ 'GROUND' == produit?.type?.name() }">Terrain</option>
+				</select>
+			</div>
+			
+			<div>
+				<input type="submit" value="Valider" />
+			</div>
+		</form>
+	</body>
+</html>
